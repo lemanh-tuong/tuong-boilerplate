@@ -1,0 +1,14 @@
+node_modules
+yarn.lock
+.vscode
+.env
+.eslintignore
+.eslintrc
+.DS_STORE
+.git
+.gitignore
+.prettierignore
+.prettierrc
+.yarnrc
+nodemon.json
+package-lock.json

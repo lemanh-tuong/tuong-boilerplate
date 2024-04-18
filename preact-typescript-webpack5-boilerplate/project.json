@@ -1,0 +1,72 @@
+{
+  "name": "preact-typescript-webpack5",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/preact-typescript-webpack5",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/preact-typescript-webpack5",
+        "command": "rimraf ./dist"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/preact-typescript-webpack5",
+        "postcssConfig": "apps/preact-typescript-webpack5/postcss.config.js",
+        "outputPath": "{projectRoot}/dist",
+        "commands": [
+          "nx run preact-typescript-webpack5:clean",
+          "webpack --config ./webpack.config.js --mode production --progress"
+        ]
+      }
+    },
+    "start": {
+      "dependsOn": ["build"],
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/preact-typescript-webpack5",
+        "command": "webpack serve --config ./webpack.config.js --mode development --host localhost"
+      }
+    },
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/preact-typescript-webpack5",
+        "commands": [
+          "nx run preact-typescript-webpack5:clean",
+          "webpack serve --config ./webpack.config.js --mode development --watch"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/preact-typescript-webpack5/**/*.{js,ts,jsx,tsx}"],
+        "fix": true,
+        "ignorePath": "apps/preact-typescript-webpack5/.eslintignore"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/preact-typescript-webpack5",
+        "commands": ["tsc -p tsconfig.json --noEmit"],
+        "forwardAllArgs": false
+      }
+    },
+    "stylelint": {
+      "executor": "nx-stylelint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/preact-typescript-webpack5/**/*.css"],
+        "fix": true,
+        "formatter": "compact"
+      }
+    }
+  }
+}

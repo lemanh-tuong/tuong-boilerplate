@@ -1,0 +1,4 @@
+{
+  "hello": "Bonjour {{ name }}",
+  "change-locale": "Sprache wechseln zu \"{{changeTo}}\""
+}

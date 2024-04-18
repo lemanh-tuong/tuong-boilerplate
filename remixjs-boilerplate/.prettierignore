@@ -1,0 +1,21 @@
+# Ignore artifacts:
+build
+coverage
+public
+node_modules
+
+# Ignore all HTML files:
+*.html
+
+.github
+
+dist
+
+cache
+
+app/i18n
+app/gql
+commitlint.config.js
+remix.config.js
+# app/components/icons
+lint-staged.config.js

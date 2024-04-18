@@ -16,6 +16,7 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useChangeLanguage } from 'remix-i18next';
 import { FixedProgressLoader } from './components/FixedProgressLoader';
+import antd from './css/antd.min.css';
 import reset from './css/reset.css';
 import tailwind from './css/tailwind.css';
 import { KeyOfI18nInSearchParams } from './packages/common/I18n/constants';
@@ -26,6 +27,7 @@ import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: tailwind },
   { rel: 'stylesheet', href: reset },
+  { rel: 'stylesheet', href: antd },
   ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
 ];
 
